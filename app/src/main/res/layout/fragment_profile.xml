@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- Profil Resmi -->
+    <ImageView
+        android:id="@+id/profileImage"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/baseline_person_24" />
+
+    <!-- Kullanıcı Adı -->
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/userInfo"
+        android:layout_toEndOf="@id/profileImage"
+        android:layout_marginStart="16dp"
+        android:layout_alignParentTop="true">
+
+        <TextView
+            android:id="@+id/userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kullanıcı Adı"
+            android:textAppearance="?attr/textAppearanceHeadline6" />
+
+        <ImageView
+            android:id="@+id/editUserNameIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/baseline_edit_24"
+            android:contentDescription="Düzenle" />
+    </RelativeLayout>
+
+    <!-- Kullanıcı Rütbesi -->
+    <TextView
+        android:id="@+id/userRank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/userInfo"
+        android:layout_toEndOf="@id/profileImage"
+        android:layout_marginStart="16dp"
+        android:text="Kullanıcı Rütbesi"
+        android:textAppearance="?attr/textAppearanceBody2" />
+
+    <!-- İzlenen Filmler -->
+    <TextView
+        android:id="@+id/moviesWatched"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/userRank"
+        android:layout_toEndOf="@id/profileImage"
+        android:layout_marginStart="16dp"
+        android:text="İzlenen Filmler: 0"
+        android:textAppearance="?attr/textAppearanceBody2" />
+
+    <!-- İzlenecek Filmler -->
+    <TextView
+        android:id="@+id/moviesToWatch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/moviesWatched"
+        android:layout_toEndOf="@id/profileImage"
+        android:layout_marginStart="16dp"
+        android:text="İzlenecek Filmler: 0"
+        android:textAppearance="?attr/textAppearanceBody2" />
+
+    <!-- Kullanıcı Adını Güncelleme Alanı -->
+    <RelativeLayout
+        android:id="@+id/editUserNameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/moviesToWatch"
+        android:layout_marginTop="16dp"
+        android:visibility="gone">
+
+        <EditText
+            android:id="@+id/userNameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Yeni Kullanıcı Adı" />
+
+        <Button
+            android:id="@+id/saveUserNameButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kaydet"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+
+</RelativeLayout>

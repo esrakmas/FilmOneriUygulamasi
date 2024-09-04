@@ -6,6 +6,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.Fragment
 import com.example.filmoneriuygulamasi.databinding.ActivityMainBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -23,8 +24,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-
         // Retrofit ve API servislerini başlat
         val retrofit = Retrofit.Builder()
             .baseUrl("https://api.collectapi.com/")
@@ -33,13 +32,36 @@ class MainActivity : AppCompatActivity() {
 
         movieApiService = retrofit.create(MovieApiService::class.java)
 
-
-
         // API çağrılarını başlat
         fetchImdbSearchByName("inception")
         fetchMoviesImdb()
         fetchMovieSuggest()
 
+        //home ile açılış yap
+        replaceFragment(HomeFragment())
+        binding.bottomNavigationView.setOnItemSelectedListener {menuItem ->
+            Log.d("bottomChek", "bottom: ${binding.bottomNavigationView}")
+
+            when (menuItem.itemId) {
+                R.id.home -> replaceFragment(HomeFragment())
+                R.id.library -> replaceFragment(LibraryFragment())
+                R.id.profile -> replaceFragment(ProfileFragment())
+                else->{
+                }
+            }
+            true
+        }
+
+
+    }
+
+
+    // Fragment'leri değiştiren yardımcı fonksiyon
+    private fun replaceFragment(fragment: Fragment){
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.fragment_layout,fragment)
+        fragmentTransaction.commit()
     }
 
 

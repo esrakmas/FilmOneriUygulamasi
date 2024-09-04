@@ -6,11 +6,6 @@
         android:icon="@drawable/baseline_home_24"/>
 
     <item
-        android:id="@+id/search"
-        android:title="Serach"
-        android:icon="@drawable/baseline_search_24" />
-
-    <item
         android:id="@+id/library"
         android:title="Library"
         android:icon="@drawable/baseline_book_24" />

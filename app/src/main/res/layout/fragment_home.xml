@@ -5,14 +5,13 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Film Arama Alanı -->
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:queryHint="Film Ara" />
+        android:queryHint="Film Ara"
+        android:background="@drawable/searchview_bg"/>
 
-    <!-- Film Önerileri Başlığı -->
     <TextView
         android:id="@+id/textViewMovieSuggestions"
         android:layout_width="match_parent"
@@ -22,7 +21,6 @@
         android:textStyle="bold"
         android:layout_marginTop="16dp" />
 
-    <!-- Film Önerileri RecyclerView (3 sütunlu grid) -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewMovieSuggestions"
         android:layout_width="match_parent"

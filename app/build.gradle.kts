@@ -60,7 +60,7 @@ dependencies {
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation ("com.squareup.retrofit2:converter-scalars:2.9.0")
 
-    implementation ("com.github.bumptech.glide:glide:4.15.1")
+    implementation (libs.glide)
     annotationProcessor ("com.github.bumptech.glide:compiler:4.15.1")
 
     implementation ("androidx.recyclerview:recyclerview:1.2.1")

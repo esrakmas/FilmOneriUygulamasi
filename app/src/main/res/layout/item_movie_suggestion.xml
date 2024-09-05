@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <!-- Film Posteri -->
+    <ImageView
+        android:id="@+id/imageViewPoster"
+        android:layout_width="150dp"
+        android:layout_height="225dp"
+        android:scaleType="centerCrop"
+        android:contentDescription="@string/movie_poster" />
+
+    <!-- Film Adı -->
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:text="Film Adı" />
+
+    <!-- Film Süresi -->
+    <TextView
+        android:id="@+id/textViewDuration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="14sp"
+        android:text="Süre: 120 dk" />
+
+    <!-- Film Türü -->
+    <TextView
+        android:id="@+id/textViewGenre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="14sp"
+        android:text="Tür: Aksiyon" />
+
+</LinearLayout>

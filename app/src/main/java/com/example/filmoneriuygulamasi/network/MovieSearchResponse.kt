@@ -1,4 +1,4 @@
-package com.example.filmoneriuygulamasi
+package com.example.filmoneriuygulamasi.network
 
 data class MovieSearchResponse(
     val success: Boolean,

@@ -1,4 +1,4 @@
-package com.example.filmoneriuygulamasi
+package com.example.filmoneriuygulamasi.network
 
 data class MovieSuggestResponse(
     val result: List<MovieSuggestion>

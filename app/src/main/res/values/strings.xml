@@ -2,4 +2,8 @@
     <string name="app_name">FilmOneriUygulamasi</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="movie_poster">Movie Poster</string>
+    <string name="imdb_movie_poster">IMDb Movie Poster</string>
 </resources>

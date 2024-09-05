@@ -1,4 +1,4 @@
-package com.example.filmoneriuygulamasi
+package com.example.filmoneriuygulamasi.network
 
 import retrofit2.Call
 import retrofit2.http.GET
@@ -18,11 +18,11 @@ interface MovieApiService {
     fun moviesImdb(
         @Header("content-type") contentType: String,
         @Header("authorization") authorization: String
-    ): Call<String>
+    ): Call<TopImdbMoviesResponse>
 
     @GET("watching/movieSuggest")
     fun movieSuggest(
         @Header("content-type") contentType: String,
         @Header("authorization") authorization: String
-    ): Call<String>
+    ): Call<MovieSuggestResponse>
 }

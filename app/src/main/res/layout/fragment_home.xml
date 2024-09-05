@@ -26,28 +26,9 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewMovieSuggestions"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="569dp"
         android:layout_marginTop="8dp"
         android:layout_weight="1"
         android:scrollbars="vertical" />
 
-    <!-- IMDb En İyi Filmler Başlığı -->
-    <TextView
-        android:id="@+id/textViewImdbTopMovies"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="IMDb En İyi Filmler"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_marginTop="16dp" />
-
-    <!-- IMDb En İyi Filmler RecyclerView (3 sütunlu grid) -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewImdbTopMovies"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_weight="1"
-        android:scrollbars="vertical" />
-
-</LinearLayout>
+  </LinearLayout>

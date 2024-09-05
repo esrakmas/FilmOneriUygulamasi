@@ -14,11 +14,6 @@ interface MovieApiService {
         @Query("query") query: String
     ): Call<String>
 
-    @GET("watching/imdb")
-    fun moviesImdb(
-        @Header("content-type") contentType: String,
-        @Header("authorization") authorization: String
-    ): Call<TopImdbMoviesResponse>
 
     @GET("watching/movieSuggest")
     fun movieSuggest(

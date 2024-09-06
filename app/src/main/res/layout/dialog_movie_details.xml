@@ -11,7 +11,7 @@
 
 
         <ImageView
-            android:id="@+id/imageViewPoster"
+            android:id="@+id/imageViewPosterDetailsDialog"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scaleType="fitCenter"
@@ -20,7 +20,7 @@
             android:layout_marginBottom="16dp" />
 
         <TextView
-            android:id="@+id/textViewName"
+            android:id="@+id/textViewNameDetailsDialog"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="18sp"
@@ -29,7 +29,7 @@
             android:text="Film Adı" />
 
         <TextView
-            android:id="@+id/textViewYear"
+            android:id="@+id/textViewYearDetailsDialog"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="16sp"
@@ -37,7 +37,7 @@
             android:text="Yıl: 2024" />
 
         <TextView
-            android:id="@+id/textViewGenre"
+            android:id="@+id/textViewGenreDetailsDialog"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="16sp"
@@ -45,7 +45,7 @@
             android:text="Tür: Aksiyon" />
 
         <TextView
-            android:id="@+id/textViewDuration"
+            android:id="@+id/textViewDurationDetailsDialog"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="16sp"
@@ -53,7 +53,7 @@
             android:text="Süre: 120 dk" />
 
         <TextView
-            android:id="@+id/textViewDirector"
+            android:id="@+id/textViewDirectorDetailsDialog"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="16sp"
@@ -61,7 +61,7 @@
             android:text="Yönetmen: Yönetmen Adı" />
 
         <TextView
-            android:id="@+id/textViewScreenwriter"
+            android:id="@+id/textViewScreenwriterDetailsDialog"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="16sp"
@@ -69,7 +69,7 @@
             android:text="Senarist: Senarist Adı" />
 
         <TextView
-            android:id="@+id/textViewProducer"
+            android:id="@+id/textViewProducerDetailsDialog"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="16sp"
@@ -77,7 +77,7 @@
             android:text="Yapımcı: Yapımcı Adı" />
 
         <TextView
-            android:id="@+id/textViewCountry"
+            android:id="@+id/textViewCountryDetailsDialog"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="16sp"
@@ -85,7 +85,7 @@
             android:text="Ülke: Ülke" />
 
         <TextView
-            android:id="@+id/textViewTeaser"
+            android:id="@+id/textViewTeaserDetailsDialog"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="16sp"
@@ -99,14 +99,14 @@
             android:layout_marginTop="16dp">
 
             <Button
-                android:id="@+id/buttonWatched"
+                android:id="@+id/buttonWatchedDetailsDialog"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="İzledim" />
 
             <Button
-                android:id="@+id/buttonWatchLater"
+                android:id="@+id/buttonWatchLaterDetailsDialog"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

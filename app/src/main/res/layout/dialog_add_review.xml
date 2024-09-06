@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Özet ekleme alanı -->
+    <EditText
+        android:id="@+id/editTextSummary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Özet ekleyin"
+        android:inputType="textMultiLine"
+        android:minLines="3"
+        android:maxLines="5"
+        android:gravity="top"
+        android:padding="10dp"
+        android:background="@android:drawable/edit_text" />
+
+    <!-- Yorum ekleme alanı -->
+    <EditText
+        android:id="@+id/editTextComment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Yorum ekleyin"
+        android:inputType="textMultiLine"
+        android:minLines="3"
+        android:maxLines="5"
+        android:gravity="top"
+        android:padding="10dp"
+        android:background="@android:drawable/edit_text"
+        android:layout_marginTop="16dp" />
+
+    <!-- Yorum ya da özet ekleyip gönderen buton -->
+    <Button
+        android:id="@+id/buttonSubmitReview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Gönder"
+        android:layout_marginTop="16dp" />
+
+    <!-- Yorum ya da özet eklemeden kaydet butonu -->
+    <Button
+        android:id="@+id/buttonSaveWithoutReview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Yorum ya da Özet Eklemeden Kaydet"
+        android:layout_marginTop="8dp" />
+</LinearLayout>

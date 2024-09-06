@@ -8,7 +8,7 @@
 
 
     <ImageView
-        android:id="@+id/imageViewPoster"
+        android:id="@+id/imageViewPosterSuggestion"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
@@ -24,36 +24,36 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textViewTitle"
+        android:id="@+id/textViewTitleSuggestion"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textSize="16sp"
         android:textStyle="bold"
         android:text="Film Adı"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewPoster"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewPosterSuggestion"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
-        android:id="@+id/textViewDuration"
+        android:id="@+id/textViewDurationSuggestion"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textSize="14sp"
         android:text="Süre: 120 dk"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTitle"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitleSuggestion"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
-        android:id="@+id/textViewGenre"
+        android:id="@+id/textViewGenreSuggestion"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textSize="14sp"
         android:text="Tür: Aksiyon"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDuration"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDurationSuggestion"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />

@@ -26,11 +26,11 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Binding başlatılır
+        // Binding baslat
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        // RecyclerView için GridLayoutManager ayarlanır
+        //  GridLayoutManager 3lu sutun olsun
         binding.recyclerViewMovieSuggestions.layoutManager = GridLayoutManager(context, 3)
 
         // Film önerilerini API'den yükleme fonksiyonu çağrılır
@@ -44,7 +44,7 @@ class HomeFragment : Fragment() {
             contentType = "application/json",
             authorization = "apikey 0zXunVCs4qN1zD5YpNZ88V:7kztaQJhg1xKov9tvLjaGZ"
         )
-
+        //yanıt
         call.enqueue(object : Callback<MovieSuggestResponse> {
             override fun onResponse(call: Call<MovieSuggestResponse>, response: Response<MovieSuggestResponse>) {
                 if (response.isSuccessful) {

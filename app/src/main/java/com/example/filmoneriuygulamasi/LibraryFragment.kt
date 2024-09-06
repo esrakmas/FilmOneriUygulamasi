@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.filmoneriuygulamasi.databinding.FragmentLibraryBinding
+import androidx.viewpager2.widget.ViewPager2
+import com.example.filmoneriuygulamasi.adapter.LibraryAdapter
+import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
 
@@ -18,43 +20,34 @@ import com.google.android.material.tabs.TabLayoutMediator
  */
 class LibraryFragment : Fragment() {
 
-    private var _binding: FragmentLibraryBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var tabLayout: TabLayout
+    private lateinit var viewPager: ViewPager2
+    private lateinit var libraryAdapter: LibraryAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentLibraryBinding.inflate(inflater, container, false)
+        val view = inflater.inflate(R.layout.fragment_library, container, false)
 
-        // Adapter sınıfını burada tanımlıyoruz
-        val adapter = object : FragmentStateAdapter(requireActivity()) {
-            override fun getItemCount(): Int = 2
+        tabLayout = view.findViewById(R.id.tabLayout)
+        viewPager = view.findViewById(R.id.viewPager)
 
-            override fun createFragment(position: Int): Fragment {
-                return when (position) {
-                    0 -> WatchedMoviesFragment() // İzlediklerim sekmesi
-                    1 -> WatchLaterFragment() // Daha Sonra İzle sekmesi
-                    else -> WatchedMoviesFragment() // Varsayılan olarak ilk fragment gösterilsin
-                }
-            }
-        }
+        // Adapter set up
+        libraryAdapter = LibraryAdapter(this)
+        viewPager.adapter = libraryAdapter
 
-        binding.viewPager.adapter = adapter
-
-        TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
+        // Attach TabLayout with ViewPager2
+        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = when (position) {
                 0 -> "İzlediklerim"
                 1 -> "Daha Sonra İzle"
-                else -> "İzlediklerim"
+                else -> null
             }
         }.attach()
 
-        return binding.root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+        return view
     }
 }
+
+

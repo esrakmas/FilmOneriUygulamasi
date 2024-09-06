@@ -1,59 +1,77 @@
-package com.example.filmoneriuygulamasi
-
+import android.app.AlertDialog
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import com.example.filmoneriuygulamasi.R
+import com.example.filmoneriuygulamasi.databinding.FragmentProfileBinding
+import com.example.filmoneriuygulamasi.databinding.DialogEditUsernameBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [ProfileFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ProfileFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var _binding: FragmentProfileBinding? = null
+    private val binding get() = _binding!!
+    private lateinit var sharedPreferences: SharedPreferences
+    private val PREFS_NAME = "UserPreferences"
+    private val KEY_USER_NAME = "userName"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        _binding = FragmentProfileBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ProfileFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ProfileFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // SharedPreferences'ı başlat
+        sharedPreferences = requireContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+
+        // Kullanıcı adını SharedPreferences'tan oku ve göster
+        val savedUserName = sharedPreferences.getString(KEY_USER_NAME, "Kullanıcı Adı")
+        binding.userName.text = savedUserName
+
+        // Kullanıcı adını düzenleme ikonuna tıklanma olayını dinle
+        binding.editUserNameIcon.setOnClickListener {
+            showEditUserNameDialog()
+        }
+    }
+
+    private fun showEditUserNameDialog() {
+        val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_edit_username, null)
+        val binding = DialogEditUsernameBinding.bind(dialogView)
+
+        val dialog = AlertDialog.Builder(requireContext())
+            .setTitle("Kullanıcı Adı Düzenle")
+            .setView(dialogView)
+            .setNegativeButton("İptal", null)
+            .setPositiveButton("Kaydet") { _, _ ->
+                val newUserName = binding.userNameEditText.text.toString()
+                if (newUserName.isNotBlank()) {
+                    updateUserName(newUserName)
                 }
             }
+            .create()
+
+        dialog.show()
+    }
+
+    private fun updateUserName(newUserName: String) {
+        binding.userName.text = newUserName
+        // Kullanıcı adını SharedPreferences'ta kaydet
+        with(sharedPreferences.edit()) {
+            putString(KEY_USER_NAME, newUserName)
+            apply() // veya commit() kullanabilirsiniz
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

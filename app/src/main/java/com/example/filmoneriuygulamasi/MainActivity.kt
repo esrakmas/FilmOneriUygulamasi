@@ -1,5 +1,6 @@
 package com.example.filmoneriuygulamasi
 
+import ProfileFragment
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity

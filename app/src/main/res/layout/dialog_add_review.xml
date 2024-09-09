@@ -5,7 +5,21 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Özet ekleme alanı -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageViewAddReviewDialog"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/baseline_close_24"
+            android:layout_marginTop="8dp"
+            android:padding="4dp" />
+    </RelativeLayout>
+
     <EditText
         android:id="@+id/editTextSummary"
         android:layout_width="match_parent"
@@ -17,8 +31,6 @@
         android:gravity="top"
         android:padding="10dp"
         android:background="@android:drawable/edit_text" />
-
-    <!-- Yorum ekleme alanı -->
     <EditText
         android:id="@+id/editTextComment"
         android:layout_width="match_parent"
@@ -32,7 +44,6 @@
         android:background="@android:drawable/edit_text"
         android:layout_marginTop="16dp" />
 
-    <!-- Yorum ya da özet ekleyip gönderen buton -->
     <Button
         android:id="@+id/buttonSubmitReview"
         android:layout_width="match_parent"
@@ -40,7 +51,6 @@
         android:text="Gönder"
         android:layout_marginTop="16dp" />
 
-    <!-- Yorum ya da özet eklemeden kaydet butonu -->
     <Button
         android:id="@+id/buttonSaveWithoutReview"
         android:layout_width="match_parent"

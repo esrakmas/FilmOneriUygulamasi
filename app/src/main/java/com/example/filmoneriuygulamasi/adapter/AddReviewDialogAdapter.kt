@@ -27,6 +27,10 @@ class AddReviewDialogAdapter {
 
             reviewDialog.show()
 
+            reviewDialogBinding.imageViewAddReviewDialog.setOnClickListener {
+                reviewDialog.dismiss()
+            }
+
             // Yorum ya da özet ile birlikte gönder
             reviewDialogBinding.buttonSubmitReview.setOnClickListener {
                 val userSummary = reviewDialogBinding.editTextSummary.text.toString()

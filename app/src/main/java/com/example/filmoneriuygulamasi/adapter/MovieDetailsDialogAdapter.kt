@@ -57,6 +57,11 @@ class MovieDetailsDialogAdapter
             dialogBinding.buttonWatchLaterDetailsDialog.setOnClickListener {
                 dialog.dismiss()
             }
+
+            dialogBinding.imageViewCloseDetailsDialog.setOnClickListener {
+                dialog.dismiss()
+            }
+
         }
     }
 

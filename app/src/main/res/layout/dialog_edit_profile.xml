@@ -5,6 +5,18 @@
     android:orientation="vertical"
     android:padding="16dp">
 
+    <ImageView
+        android:id="@+id/imageViewCloseEditProfileDialog"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="end"
+        android:src="@drawable/baseline_close_24"
+        android:layout_marginTop="8dp"
+        android:padding="4dp" />
+
+
     <!-- Yatay LinearLayout: Cinsiyet Seçimi Görselleri İçin -->
     <LinearLayout
         android:layout_width="match_parent"

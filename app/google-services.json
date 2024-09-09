@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "455393257932",
+    "project_id": "filmoneriuygulamasi",
+    "storage_bucket": "filmoneriuygulamasi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:455393257932:android:a106905b6cd27ced285569",
+        "android_client_info": {
+          "package_name": "com.example.filmoneriuygulamasi"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAI6n_dzY2W5S2c8ngf9YJ7T1eDWHVv0Ec"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

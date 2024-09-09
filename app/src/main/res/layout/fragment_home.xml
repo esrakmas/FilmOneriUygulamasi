@@ -10,7 +10,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:queryHint="Film Ara"
-        android:background="@drawable/searchview_bg"/>
+        android:background="@drawable/searchview_bg">
+
+    </androidx.appcompat.widget.SearchView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewMovieSearch"
+        android:layout_width="match_parent"
+        android:layout_height="569dp"
+        android:layout_weight="1"
+        android:scrollbars="vertical"
+        android:visibility="gone"
+      />
 
     <TextView
         android:id="@+id/textViewMovieSuggestions"

@@ -15,15 +15,17 @@ data class MovieData(
 )
 
 data class MovieLine(
-    val name: String,
-    val year: String,
-    val sty: String,
-    val times: String,
-    val dir: String,
-    val sce: String,
-    val pro: String,
-    val pla: String,
-    val img: String,
-    val teaser: String
+    val name: String="",
+    val year: String="",
+    val sty: String="",
+    val times: String="",
+    val dir: String="",
+    val sce: String="",
+    val pro: String="",
+    val pla: String="",
+    val img: String="",
+    val teaser: String=""
+
 )
+
 

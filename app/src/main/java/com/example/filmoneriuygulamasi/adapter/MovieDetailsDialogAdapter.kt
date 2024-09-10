@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide
 import com.example.filmoneriuygulamasi.databinding.DialogAddReviewBinding
 import com.example.filmoneriuygulamasi.databinding.DialogMovieDetailsBinding
 import com.example.filmoneriuygulamasi.network.MovieLine
+import com.example.filmoneriuygulamasi.repository.FirebaseRepository
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
@@ -53,13 +54,16 @@ class MovieDetailsDialogAdapter
 
             dialog.show()
 
+            val firebaseRepository = FirebaseRepository()
+
+
             dialogBinding.buttonWatchedDetailsDialog.setOnClickListener {
                 dialog.dismiss()
                 AddReviewDialogAdapter.showReviewDialog(context, movieLine)
             }
 
             dialogBinding.buttonWatchLaterDetailsDialog.setOnClickListener {
-                saveMovieToWatchLater(context, movieLine)
+                firebaseRepository.saveMovieToWatchLater(context, movieLine)
                 dialog.dismiss()
             }
 
@@ -67,25 +71,6 @@ class MovieDetailsDialogAdapter
                 dialog.dismiss()
             }
 
-        }
-        // Firebase'e "Daha Sonra İzle" kaydı yapma
-        private fun saveMovieToWatchLater(context: Context, movieLine: MovieLine) {
-            val database: DatabaseReference = FirebaseDatabase.getInstance().reference
-            val movieData = hashMapOf(
-                "movieName" to movieLine.name, // Film Adı
-                "moviePosterUrl" to movieLine.img, // Film Poster URL'si
-                "movieYear" to movieLine.year, // Film Yılı
-                "movieGenre" to movieLine.sty // Film Türü
-            )
-
-            // "watchLater" veritabanı düğümüne kaydet
-            database.child("watchLater").child(movieLine.name).setValue(movieData)
-                .addOnSuccessListener {
-                    Toast.makeText(context, "${movieLine.name} 'Daha Sonra İzle' listesine eklendi.", Toast.LENGTH_SHORT).show()
-                }
-                .addOnFailureListener {
-                    Toast.makeText(context, "Film kaydedilirken bir hata oluştu.", Toast.LENGTH_SHORT).show()
-                }
         }
 
 

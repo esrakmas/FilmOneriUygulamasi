@@ -34,9 +34,9 @@ class AddReviewDialogAdapter {
             // Yorum ya da özet ile birlikte gönder
             reviewDialogBinding.buttonSubmitReview.setOnClickListener {
                 val userSummary = reviewDialogBinding.editTextSummary.text.toString()
-                val userReview = reviewDialogBinding.editTextComment.text.toString()
+                val userComment = reviewDialogBinding.editTextComment.text.toString()
 
-                Log.d("MovieReview", "Özet: $userSummary, Yorum: $userReview")
+                Log.d("MovieReview", "Özet: $userSummary, Yorum: $userComment")
                 reviewDialog.dismiss()
                 // Özet ve yorumu işleme koyabilirsiniz
             }

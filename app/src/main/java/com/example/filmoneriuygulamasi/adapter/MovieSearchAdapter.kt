@@ -30,19 +30,16 @@ class MovieSearchAdapter(private val movieList: List<MovieSearchResult>) : Recyc
             return MovieLine(
                 name = movie.Title,
                 year = movie.Year,
-                sty = movie.Type,
-                times = "N/A", // Bu bilgi MovieSearchResult'ta yok
-                dir = "N/A", // Bu bilgi MovieSearchResult'ta yok
-                sce = "N/A", // Bu bilgi MovieSearchResult'ta yok
-                pro = "N/A", // Bu bilgi MovieSearchResult'ta yok
-                pla = "N/A", // Bu bilgi MovieSearchResult'ta yok
+                sty = "",
+                times = "",
+                dir = "",
+                sce = "",
+                pro = "",
+                pla = "",
                 img = movie.Poster,
-                teaser = "N/A" // Bu bilgi MovieSearchResult'ta yok
+                teaser = ""
             )
         }
-
-
-
 
     }
 

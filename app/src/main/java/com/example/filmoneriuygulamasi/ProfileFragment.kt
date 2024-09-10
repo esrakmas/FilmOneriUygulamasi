@@ -16,12 +16,16 @@ class ProfileFragment : Fragment() {
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
     private lateinit var sharedPreferences: SharedPreferences
+
     private val PREFS_NAME = "UserPreferences"
     private val KEY_USER_NAME = "userName"
     private val KEY_PROFILE = "profile"
 
     private val KEY_MOVIES_WATCHED = "moviesWatched"
     private val KEY_MOVIES_TO_WATCH = "moviesToWatch"
+    private val KEY_TARGET = "target"
+
+    private val targets = listOf(50, 150, 300, 600, Int.MAX_VALUE) // Hedef aşamaları
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,8 +49,8 @@ class ProfileFragment : Fragment() {
         updateProfileImage(savedProfile ?: "default")
 
         // İzlenen ve izlenecek filmler sayısını oku ve göster
-        val moviesWatched = sharedPreferences.getInt(KEY_MOVIES_WATCHED, 56)
-        val moviesToWatch = sharedPreferences.getInt(KEY_MOVIES_TO_WATCH, 96)
+        val moviesWatched = sharedPreferences.getInt(KEY_MOVIES_WATCHED, 0)
+        val moviesToWatch = sharedPreferences.getInt(KEY_MOVIES_TO_WATCH, 50)
         updateMovieStats(moviesWatched, moviesToWatch)
 
         // Kullanıcı adını düzenleme ikonuna tıklanma olayını dinle

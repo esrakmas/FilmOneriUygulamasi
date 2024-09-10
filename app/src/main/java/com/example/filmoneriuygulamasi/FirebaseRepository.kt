@@ -135,4 +135,27 @@ class FirebaseRepository {
             }
         })
     }
+
+
+    // Film özet ve yorumlarını almak için fonksiyon
+    fun fetchMovieSummaryAndComments(movieName: String, onResult: (String?, String?) -> Unit) {
+        database.child("watched").child(movieName).get()
+            .addOnSuccessListener { snapshot ->
+                if (snapshot.exists()) {
+                    val summary = snapshot.child("summary").getValue(String::class.java)
+                    val comments = snapshot.child("comment").getValue(String::class.java)
+                    onResult(summary, comments)
+                } else {
+                    onResult(null, null) // Veriler bulunamadı
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.e("FirebaseRepository", "Error fetching movie summary and comments", exception)
+                onResult(null, null) // Hata durumunda null döndür
+            }
+    }
+
+
+
+
 }

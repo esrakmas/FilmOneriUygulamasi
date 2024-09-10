@@ -1,5 +1,6 @@
 package com.example.filmoneriuygulamasi.adapter
 
+import android.app.AlertDialog
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.filmoneriuygulamasi.R
 import com.example.filmoneriuygulamasi.network.MovieLine
 import com.example.filmoneriuygulamasi.databinding.ItemWatchedBinding
+import com.example.filmoneriuygulamasi.repository.FirebaseRepository
 
 class WatchedAdapter(
     private var movieList: List<MovieLine> = listOf()
@@ -22,6 +24,27 @@ class WatchedAdapter(
                 // itemView.context ile context'i alıyoruz
                 AddReviewDialogAdapter.showReviewDialog(itemView.context, movieLine)
             }
+
+            binding.buttonDelete.setOnClickListener {
+                val movieLine = movieList[adapterPosition]
+
+                // Silme onay diyalogunu oluştur
+                AlertDialog.Builder(itemView.context)
+                    .setTitle("Silme Onayı")
+                    .setMessage("Silmek istediğinize emin misiniz?")
+                    .setPositiveButton("Evet") { _, _ ->
+
+                        val firebaseRepository = FirebaseRepository()
+                        firebaseRepository.deleteMovieFromWatchLater(itemView.context, movieLine.name)
+
+                        val updatedList = movieList.toMutableList()
+                        updatedList.removeAt(adapterPosition)
+                        submitList(updatedList)
+                    }
+                    .setNegativeButton("Hayır", null) // Hayır'a tıklandığında hiçbir şey yapma
+                    .show()
+            }
+
         }
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WatchedViewHolder {

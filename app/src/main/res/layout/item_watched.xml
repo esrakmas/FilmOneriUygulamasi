@@ -41,16 +41,15 @@
 
     </LinearLayout>
 
-    <!-- İzledim Butonu -->
     <Button
-        android:id="@+id/buttonWatched"
+        android:id="@+id/buttonUpdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:layout_marginStart="8dp"
         android:paddingHorizontal="16dp"
         android:paddingVertical="8dp"
-        android:text="İzledim"
+        android:text="Güncelle"
         android:textColor="@android:color/white" />
 
 </LinearLayout>

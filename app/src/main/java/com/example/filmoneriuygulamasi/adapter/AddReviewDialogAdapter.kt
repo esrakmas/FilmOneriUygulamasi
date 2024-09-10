@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import com.example.filmoneriuygulamasi.databinding.DialogAddReviewBinding
 import com.example.filmoneriuygulamasi.network.MovieLine
+import com.example.filmoneriuygulamasi.repository.FirebaseRepository
 
 
 /**
@@ -27,6 +28,8 @@ class AddReviewDialogAdapter {
 
             reviewDialog.show()
 
+            val firebaseRepository = FirebaseRepository()
+
             reviewDialogBinding.imageViewAddReviewDialog.setOnClickListener {
                 reviewDialog.dismiss()
             }
@@ -36,17 +39,16 @@ class AddReviewDialogAdapter {
                 val userSummary = reviewDialogBinding.editTextSummary.text.toString()
                 val userComment = reviewDialogBinding.editTextComment.text.toString()
 
+                // Eğer özet ya da yorum boşsa, boş string olarak kaydedelim
+                val summaryToSave = if (userSummary.isNotEmpty()) userSummary else ""
+                val commentToSave = if (userComment.isNotEmpty()) userComment else ""
+
+                firebaseRepository.saveMovieToWatched(context, movie, userSummary, userComment)
                 Log.d("MovieReview", "Özet: $userSummary, Yorum: $userComment")
                 reviewDialog.dismiss()
                 // Özet ve yorumu işleme koyabilirsiniz
             }
 
-            // Yorum ya da özet eklemeden kaydet
-            reviewDialogBinding.buttonSaveWithoutReview.setOnClickListener {
-                Log.d("MovieReview", "${movie.name} için yorum ya da özet eklemeden kaydedildi.")
-                reviewDialog.dismiss()
-                // Kaydetme işlemi yapılabilir
-            }
         }
     }
 }

@@ -7,48 +7,49 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.filmoneriuygulamasi.R
-import com.example.filmoneriuygulamasi.databinding.ItemMovieLibraryBinding
 import com.example.filmoneriuygulamasi.network.MovieLine
+import com.example.filmoneriuygulamasi.databinding.ItemWatchedBinding
 
-class MovieLibraryAdapter(
+class WatchedAdapter(
     private var movieList: List<MovieLine> = listOf()
-) : RecyclerView.Adapter<MovieLibraryAdapter.MovieLibraryViewHolder>() {
+) : RecyclerView.Adapter<WatchedAdapter.WatchedViewHolder>() {
 
-    inner class MovieLibraryViewHolder(val binding: ItemMovieLibraryBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class WatchedViewHolder(val binding: ItemWatchedBinding) : RecyclerView.ViewHolder(binding.root)
     {
         init {
-            binding.buttonWatched.setOnClickListener {
+            binding.buttonUpdate.setOnClickListener {
                 val movieLine = movieList[adapterPosition]
                 // itemView.context ile context'i alıyoruz
                 AddReviewDialogAdapter.showReviewDialog(itemView.context, movieLine)
             }
         }
     }
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieLibraryViewHolder {
-        val binding = ItemMovieLibraryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return MovieLibraryViewHolder(binding)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WatchedViewHolder {
+        val binding = ItemWatchedBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return WatchedViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: MovieLibraryViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: WatchedViewHolder, position: Int) {
         val movieLine = movieList[position]
 
         holder.binding.textViewTitle.text = movieLine.name
         holder.binding.textViewYear.text = movieLine.year
 
+
         val secureUrl = movieLine.img.replace("http://", "https://")
-        Log.d("MovieLibraryAdapter", "Loading image from URL: $secureUrl")
+        Log.d("WatchedAdapter", "Loading image from URL: $secureUrl")
 
         Glide.with(holder.binding.imageViewPoster.context)
             .load(secureUrl)
-            .apply(RequestOptions()
+            .apply(
+                RequestOptions()
                 .placeholder(R.drawable.ic_launcher_background)
                 .error(R.drawable.baseline_no))
             .into(holder.binding.imageViewPoster)
-
-
     }
 
     override fun getItemCount(): Int = movieList.size
+
 
     fun submitList(movies: List<MovieLine>) {
         movieList = movies

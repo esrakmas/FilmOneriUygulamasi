@@ -47,7 +47,7 @@ class LibraryFragment : Fragment() {
 
         override fun createFragment(position: Int): Fragment {
             return when (position) {
-                0 -> WatchedMoviesFragment() // Tab 1: İzlediklerim
+                0 -> WatchedFragment() // Tab 1: İzlediklerim
                 1 -> WatchLaterFragment() // Tab 2: Daha Sonra İzle
                 else -> Fragment() // Default case
             }

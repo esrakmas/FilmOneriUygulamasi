@@ -2,39 +2,41 @@ package com.example.filmoneriuygulamasi
 
 import android.os.Bundle
 import android.util.Log
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.filmoneriuygulamasi.adapter.WatchLaterAdapter
+import com.example.filmoneriuygulamasi.adapter.WatchedAdapter
 import com.example.filmoneriuygulamasi.databinding.FragmentWatchLaterBinding
+import com.example.filmoneriuygulamasi.databinding.FragmentWatchedBinding
 import com.example.filmoneriuygulamasi.repository.FirebaseRepository
 
-class WatchLaterFragment : Fragment() {
+class WatchedFragment : Fragment() {
 
-    private var _binding: FragmentWatchLaterBinding? = null
+    private var _binding: FragmentWatchedBinding? = null
     private val binding get() = _binding!!
-    private lateinit var adapter: WatchLaterAdapter
+    private lateinit var adapter: WatchedAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentWatchLaterBinding.inflate(inflater, container, false)
+        _binding = FragmentWatchedBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        adapter = WatchLaterAdapter()
-        binding.recyclerViewWatchLater.layoutManager = LinearLayoutManager(context)
-        binding.recyclerViewWatchLater.adapter = adapter
+        adapter = WatchedAdapter()
+        binding.recyclerViewWatchedMovies.layoutManager = LinearLayoutManager(context)
+        binding.recyclerViewWatchedMovies.adapter = adapter
 
         val firebaseRepository = FirebaseRepository()
-        firebaseRepository.fetchWatchLaterMovies { movies ->
-            Log.d("WatchLaterFragment", "Movies fetched: $movies")
+        firebaseRepository.fetchWatchedMovies { movies ->
+            Log.d("WatchedFragment", "Movies fetched: $movies")
             // Verileri adapter'a iletin
             adapter.submitList(movies)
         }
@@ -44,4 +46,5 @@ class WatchLaterFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 }

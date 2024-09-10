@@ -51,10 +51,4 @@
         android:text="Kaydet"
         android:layout_marginTop="16dp" />
 
-    <Button
-        android:id="@+id/buttonSaveWithoutReview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Not Eklemeden Kaydet"
-        android:layout_marginTop="8dp" />
 </LinearLayout>

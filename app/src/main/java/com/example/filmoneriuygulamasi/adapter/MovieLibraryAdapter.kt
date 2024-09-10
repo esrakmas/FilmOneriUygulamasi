@@ -15,7 +15,15 @@ class MovieLibraryAdapter(
 ) : RecyclerView.Adapter<MovieLibraryAdapter.MovieLibraryViewHolder>() {
 
     inner class MovieLibraryViewHolder(val binding: ItemMovieLibraryBinding) : RecyclerView.ViewHolder(binding.root)
-
+    {
+        init {
+            binding.buttonWatched.setOnClickListener {
+                val movieLine = movieList[adapterPosition]
+                // itemView.context ile context'i alıyoruz
+                AddReviewDialogAdapter.showReviewDialog(itemView.context, movieLine)
+            }
+        }
+    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieLibraryViewHolder {
         val binding = ItemMovieLibraryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MovieLibraryViewHolder(binding)
@@ -25,7 +33,7 @@ class MovieLibraryAdapter(
         val movieLine = movieList[position]
 
         holder.binding.textViewTitle.text = movieLine.name
-        holder.binding.textViewDetails.text = "${movieLine.sty} | ${movieLine.times}"
+        holder.binding.textViewYear.text = movieLine.year
 
         val secureUrl = movieLine.img.replace("http://", "https://")
         Log.d("MovieLibraryAdapter", "Loading image from URL: $secureUrl")

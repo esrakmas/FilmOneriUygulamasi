@@ -9,6 +9,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.filmoneriuygulamasi.R
 import com.example.filmoneriuygulamasi.databinding.ItemWatchLaterBinding
 import com.example.filmoneriuygulamasi.network.MovieLine
+import com.example.filmoneriuygulamasi.repository.FirebaseRepository
 
 class WatchLaterAdapter(
     private var movieList: List<MovieLine> = listOf()
@@ -21,6 +22,16 @@ class WatchLaterAdapter(
                 val movieLine = movieList[adapterPosition]
                 // itemView.context ile context'i alıyoruz
                 AddReviewDialogAdapter.showReviewDialog(itemView.context, movieLine)
+
+                //önde kaydet sonra sil
+                val firebaseRepository = FirebaseRepository()
+                firebaseRepository.saveMovieToWatched(itemView.context, movieLine)
+                firebaseRepository.deleteMovieFromWatchLater(itemView.context, movieLine.name)
+
+                // RecyclerView'dan bu filmi kaldırmak için listeyi güncelle
+                val updatedList = movieList.toMutableList()
+                updatedList.removeAt(adapterPosition)
+                submitList(updatedList)
             }
         }
     }

@@ -21,14 +21,15 @@
 
     <Button
         android:id="@+id/buttonDelete"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:background="@drawable/baseline_delete_24"
+        android:backgroundTint="@color/yellow"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/buttonUpdate"
@@ -58,19 +59,21 @@
 
     <LinearLayout
         android:id="@+id/linearLayoutTitleYear"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="206dp"
+        android:layout_height="76dp"
+        android:layout_marginStart="12dp"
         android:orientation="vertical"
+        app:layout_constraintEnd_toStartOf="@id/buttonDelete"
+        app:layout_constraintHorizontal_bias="0.382"
         app:layout_constraintStart_toEndOf="@id/imageViewPoster"
-        app:layout_constraintTop_toTopOf="@id/imageViewPoster"
-        android:layout_marginStart="12dp">
+        tools:layout_editor_absoluteY="8dp">
 
         <TextView
             android:id="@+id/textViewTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ellipsize="end"
-            android:maxLines="1"
+            android:maxLines="2"
             android:textColor="@android:color/black"
             android:textSize="18sp"
             android:textStyle="bold" />

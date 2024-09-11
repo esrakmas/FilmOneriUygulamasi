@@ -30,6 +30,7 @@
         android:textSize="16sp"
         android:textStyle="bold"
         android:text="Film Adı"
+        android:textColor="@color/white"
         app:layout_constraintTop_toBottomOf="@+id/imageViewPosterSuggestion"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -41,6 +42,7 @@
         android:gravity="center"
         android:textSize="14sp"
         android:text="Süre: 120 dk"
+        android:textColor="@color/white"
         app:layout_constraintTop_toBottomOf="@+id/textViewTitleSuggestion"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -52,6 +54,7 @@
         android:gravity="center"
         android:textSize="14sp"
         android:text="Tür: Aksiyon"
+        android:textColor="@color/white"
         app:layout_constraintTop_toBottomOf="@+id/textViewDurationSuggestion"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

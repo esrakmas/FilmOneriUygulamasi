@@ -1,110 +1,184 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:background="@color/black"
+    android:orientation="vertical"
+    android:padding="8dp"
+    >
 
-    <!-- Profil Resmi -->
-    <ImageView
-        android:id="@+id/profileImage"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="24dp"
-        android:src="@drawable/baseline_person_24"
-        android:scaleType="centerCrop" />
-
-    <!-- Profil Fotoğrafı Düzenleme İkonu -->
-
-    <!-- Kullanıcı Adı ve Düzenleme İkonu -->
-    <ImageView
-        android:id="@+id/editprofileImageIcon"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_alignEnd="@id/profileImage"
-        android:layout_alignBottom="@id/profileImage"
-        android:layout_marginEnd="-25dp"
-        android:layout_marginBottom="-1dp"
-        android:contentDescription="Düzenle"
-        android:src="@drawable/baseline_edit_24" />
-
-    <RelativeLayout
-        android:id="@+id/userInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/profileImage"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp">
-
-        <TextView
-            android:id="@+id/userName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Kullanıcı Adı"
-            android:textAppearance="?attr/textAppearanceHeadline6"
-            android:textColor="@android:color/black"
-            android:layout_centerHorizontal="true" />
-
-        <ImageView
-            android:id="@+id/editUserNameIcon"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="4dp"
-            android:layout_toEndOf="@id/userName"
-            android:contentDescription="Düzenle"
-            android:src="@drawable/baseline_edit_24" />
-    </RelativeLayout>
-
-    <TextView
-        android:id="@+id/userRank"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/userInfo"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="8dp"
-        android:text="Kullanıcı Rütbesi"
-        android:textAppearance="?attr/textAppearanceBody2"
-        android:textColor="@android:color/darker_gray" />
-
-    <RelativeLayout
-        android:id="@+id/moviesProgressLayout"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/userRank"
-        android:layout_marginTop="16dp">
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
 
-        <TextView
-            android:id="@+id/moviesWatched"
+        android:background="@drawable/background_profile_info">
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="İzlenen Film Sayısı: 0"
-            android:textAppearance="?attr/textAppearanceBody2"
-            android:textColor="@android:color/black" />
+            android:orientation="horizontal"
+            android:paddingStart="30dp"
+            >
 
-        <TextView
-            android:id="@+id/moviesToWatch"
+            <ImageView
+                android:id="@+id/profileImage"
+                android:layout_width="108dp"
+                android:layout_height="104dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/circle_border"
+                android:scaleType="centerCrop"
+                android:src="@drawable/baseline_person_24" />
+
+            <ImageView
+                android:id="@+id/editprofileImageIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/circle_background"
+                android:contentDescription="Düzenle"
+                android:padding="8dp"
+                android:src="@drawable/baseline_edit_24" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/moviesWatched"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
             android:layout_marginTop="8dp"
-            android:text="İzlenecek Film Hedefi: 0"
+            android:padding="10sp"
+            android:layout_marginStart="10dp">
+
+            <TextView
+                android:id="@+id/userName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingEnd="5dp"
+                android:textSize="30sp"
+                android:text="Kullanıcı Adı"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textColor="@color/black" />
+
+            <ImageView
+                android:id="@+id/editUserNameIcon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/circle_background"
+                android:contentDescription="Düzenle"
+                android:padding="4dp"
+                android:src="@drawable/baseline_edit_24" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/userRank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Kullanıcı Rütbesi"
+            android:gravity="center"
+            android:textSize="15sp"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"
             android:textAppearance="?attr/textAppearanceBody2"
-            android:textColor="@android:color/black" />
+            android:textColor="@color/black"
+            android:background="@drawable/circle_background"/>
+
+        <ImageView
+
+            android:id="@+id/imageView2"
+            android:layout_width="147dp"
+            android:layout_height="132dp"
+
+            app:srcCompat="@drawable/rank"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:gravity="center_horizontal"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:background="@drawable/circle_border">
+
+            <ImageView
+                android:id="@+id/iconMoviesWatched"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:contentDescription="İzlenen Filmler"
+                android:src="@drawable/checked"
+               />
+
+            <TextView
+                android:id="@+id/moviesWatched"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="İzlenen Film Sayısı: 0"
+                android:textAppearance="?attr/textAppearanceBody1"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="274dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/circle_border"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/iconMoviesToWatch"
+                android:layout_width="57dp"
+                android:layout_height="48dp"
+                android:contentDescription="İzlenecek Filmler"
+                android:src="@drawable/target" />
+
+            <TextView
+                android:id="@+id/moviesToWatch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="İzlenecek Film Hedefi: 0"
+                android:textAppearance="?attr/textAppearanceBody1"
+                android:textColor="@android:color/black"
+                android:textSize="16dp" />
+        </LinearLayout>
 
         <ProgressBar
             android:id="@+id/progressBar"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:layout_below="@id/moviesToWatch"
+            android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:indeterminate="false"
-            android:progress="0"
             android:max="100"
-            style="@style/Widget.AppCompat.ProgressBar.Horizontal" />
-    </RelativeLayout>
+            android:padding="15dp"
+            android:progress="0"
+            android:background="@drawable/circle_border"
+           />
+    </LinearLayout>
 
-</RelativeLayout>
+
+</LinearLayout>

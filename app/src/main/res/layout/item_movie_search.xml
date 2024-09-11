@@ -29,6 +29,7 @@
         android:textSize="16sp"
         android:textStyle="bold"
         android:text="Film Adı"
+        android:textColor="@color/white"
         app:layout_constraintTop_toBottomOf="@+id/imageViewPosterSearch"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -40,6 +41,7 @@
         android:gravity="center"
         android:textSize="14sp"
         android:text="Yıl: 2024"
+        android:textColor="@color/white"
         app:layout_constraintTop_toBottomOf="@+id/textViewTitleSearch"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

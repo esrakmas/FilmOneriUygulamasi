@@ -4,7 +4,6 @@
     android:layout_height="wrap_content"
     android:padding="16dp">
 
-    <!-- Kapatma Butonu -->
     <ImageView
         android:id="@+id/imageViewCloseUserNameDialog"
         android:layout_width="24dp"

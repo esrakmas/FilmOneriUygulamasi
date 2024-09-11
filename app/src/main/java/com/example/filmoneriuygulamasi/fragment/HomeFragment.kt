@@ -1,4 +1,4 @@
-package com.example.filmoneriuygulamasi
+package com.example.filmoneriuygulamasi.fragment
 
 import android.content.Context
 import android.os.Bundle
@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.filmoneriuygulamasi.adapter.MovieSearchAdapter
@@ -15,14 +14,12 @@ import com.example.filmoneriuygulamasi.adapter.MovieSuggestionsAdapter
 import com.example.filmoneriuygulamasi.databinding.FragmentHomeBinding
 import com.example.filmoneriuygulamasi.network.ApiClient
 import com.example.filmoneriuygulamasi.network.MovieSearchResponse
-import com.example.filmoneriuygulamasi.network.MovieSearchResult
 import com.example.filmoneriuygulamasi.network.MovieSuggestResponse
 import com.google.gson.Gson
 import com.google.gson.JsonSyntaxException
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import com.google.firebase.database.FirebaseDatabase
 
 class HomeFragment : Fragment() {
 

@@ -16,8 +16,6 @@
         android:layout_marginTop="8dp"
         android:padding="4dp" />
 
-
-    <!-- Yatay LinearLayout: Cinsiyet Seçimi Görselleri İçin -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

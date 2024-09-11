@@ -5,7 +5,6 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewWatchedMovies"
         android:layout_width="match_parent"

@@ -1,3 +1,5 @@
+package com.example.filmoneriuygulamasi.fragment
+
 import android.app.AlertDialog
 import android.content.Context
 import android.content.SharedPreferences
@@ -6,7 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.example.filmoneriuygulamasi.R
+import com.example.filmoneriuygulamasi.SharedViewModel
 import com.example.filmoneriuygulamasi.databinding.FragmentProfileBinding
 import com.example.filmoneriuygulamasi.databinding.DialogEditProfileBinding
 import com.example.filmoneriuygulamasi.databinding.DialogEditUsernameBinding
@@ -16,14 +21,15 @@ class ProfileFragment : Fragment() {
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
     private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var sharedViewModel: SharedViewModel
 
     private val PREFS_NAME = "UserPreferences"
     private val KEY_USER_NAME = "userName"
     private val KEY_PROFILE = "profile"
-
+    private val KEY_USER_RANK = "userRank"
     private val KEY_MOVIES_WATCHED = "moviesWatched"
     private val KEY_MOVIES_TO_WATCH = "moviesToWatch"
-    private val KEY_TARGET = "target"
+
 
     private val targets = listOf(50, 150, 300, 600, Int.MAX_VALUE) // Hedef aşamaları
 
@@ -48,11 +54,6 @@ class ProfileFragment : Fragment() {
         val savedProfile = sharedPreferences.getString(KEY_PROFILE, "default")
         updateProfileImage(savedProfile ?: "default")
 
-        // İzlenen ve izlenecek filmler sayısını oku ve göster
-        val moviesWatched = sharedPreferences.getInt(KEY_MOVIES_WATCHED, 0)
-        val moviesToWatch = sharedPreferences.getInt(KEY_MOVIES_TO_WATCH, 50)
-        updateMovieStats(moviesWatched, moviesToWatch)
-
         // Kullanıcı adını düzenleme ikonuna tıklanma olayını dinle
         binding.editUserNameIcon.setOnClickListener {
             showEditUserNameDialog()
@@ -61,6 +62,67 @@ class ProfileFragment : Fragment() {
         binding.editprofileImageIcon.setOnClickListener {
             showEditProfileDialog()
         }
+
+        // sharedViewModel'i başlatın
+        sharedViewModel = ViewModelProvider(requireActivity())[SharedViewModel::class.java]
+
+        // Film istatistiklerini güncelle
+        updateMovieStats()
+
+        // Başlangıçta SharedPreferences'tan değerleri oku ve güncelle
+        loadSavedMovieStats()
+
+    }
+
+    private fun updateMovieStats() {
+        // ViewModel'den izlenen film sayısını al ve hedef aşamalarını belirle
+        sharedViewModel.watchedMoviesCount.observe(viewLifecycleOwner, Observer { moviesWatched ->
+            binding.moviesWatched.text = "İzlenen Filmler: $moviesWatched"
+
+            // Hedef aşamalarından izlenecek film sayısını belirle
+            val moviesToWatch = targets.firstOrNull { it >= moviesWatched } ?: targets.last()
+
+            // İzlenecek filmler sayısını göster
+            binding.moviesToWatch.text = "İzlenecek Filmler: $moviesToWatch"
+
+            // Progress bar hesaplaması
+            val progress = if (moviesToWatch == 0) 0 else (moviesWatched * 100) / moviesToWatch
+            binding.progressBar.progress = progress
+
+            // Kullanıcı rütbesini güncelle
+            val userRank = when (moviesWatched) {
+                in 0 until 50 -> "Film Kaşifi"
+                in 50 until 150 -> "Film Avcısı"
+                in 150 until 300 -> "Film Gurmesi"
+                in 300 until 600 -> "Film Canavarı"
+                in 600 until Int.MAX_VALUE -> "Film Virtüözü"
+                else -> "Bilinmeyen Rütbe"
+            }
+            binding.userRank.text = "Kullanıcı Rütbesi: $userRank"
+
+            // SharedPreferences'a kaydet
+            with(sharedPreferences.edit()) {
+                putInt(KEY_MOVIES_WATCHED, moviesWatched)
+                putInt(KEY_MOVIES_TO_WATCH, moviesToWatch)
+                putString(KEY_USER_RANK, userRank)
+                apply()
+            }
+        })
+    }
+
+    private fun loadSavedMovieStats() {
+        // SharedPreferences'tan film istatistiklerini oku
+        val savedMoviesWatched = sharedPreferences.getInt(KEY_MOVIES_WATCHED, 0)
+        val savedMoviesToWatch = sharedPreferences.getInt(KEY_MOVIES_TO_WATCH, 50)
+        val savedUserRank = sharedPreferences.getString(KEY_USER_RANK, "Bilinmeyen Rütbe") ?: "Bilinmeyen Rütbe"
+
+        binding.moviesWatched.text = "İzlenen Filmler: $savedMoviesWatched"
+        binding.moviesToWatch.text = "İzlenecek Filmler: $savedMoviesToWatch"
+        binding.userRank.text = "Kullanıcı Rütbesi: $savedUserRank"
+
+        // Progress bar hesaplaması
+        val progress = if (savedMoviesToWatch == 0) 0 else (savedMoviesWatched * 100) / savedMoviesToWatch
+        binding.progressBar.progress = progress
     }
 
     private fun showEditProfileDialog() {
@@ -144,14 +206,6 @@ class ProfileFragment : Fragment() {
             putString(KEY_USER_NAME, newUserName)
             apply() // veya commit() kullanabilirsiniz
         }
-    }
-
-    private fun updateMovieStats(moviesWatched: Int, moviesToWatch: Int) {
-        binding.moviesWatched.text = "İzlenen Filmler: $moviesWatched"
-        binding.moviesToWatch.text = "İzlenecek Filmler: $moviesToWatch"
-
-        val progress = if (moviesToWatch == 0) 0 else (moviesWatched * 100) / moviesToWatch
-        binding.progressBar.progress = progress
     }
 
     override fun onDestroyView() {

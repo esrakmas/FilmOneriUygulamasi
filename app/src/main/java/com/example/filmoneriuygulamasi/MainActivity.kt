@@ -1,15 +1,12 @@
 package com.example.filmoneriuygulamasi
 
-import ProfileFragment
+import com.example.filmoneriuygulamasi.fragment.ProfileFragment
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.filmoneriuygulamasi.databinding.ActivityMainBinding
-import com.example.filmoneriuygulamasi.network.ApiClient
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.example.filmoneriuygulamasi.fragment.HomeFragment
+import com.example.filmoneriuygulamasi.fragment.LibraryFragment
 
 class MainActivity : AppCompatActivity() {
 

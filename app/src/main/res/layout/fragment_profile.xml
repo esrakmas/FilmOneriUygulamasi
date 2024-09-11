@@ -59,7 +59,6 @@
             android:src="@drawable/baseline_edit_24" />
     </RelativeLayout>
 
-    <!-- Kullanıcı Rütbesi -->
     <TextView
         android:id="@+id/userRank"
         android:layout_width="wrap_content"
@@ -71,7 +70,6 @@
         android:textAppearance="?attr/textAppearanceBody2"
         android:textColor="@android:color/darker_gray" />
 
-    <!-- İzlenen/İzlenecek Filmler Oranı -->
     <RelativeLayout
         android:id="@+id/moviesProgressLayout"
         android:layout_width="match_parent"
@@ -79,7 +77,6 @@
         android:layout_below="@id/userRank"
         android:layout_marginTop="16dp">
 
-        <!-- İzlenen Filmler -->
         <TextView
             android:id="@+id/moviesWatched"
             android:layout_width="wrap_content"
@@ -87,7 +84,6 @@
             android:text="İzlenen Film Sayısı: 0"
             android:textAppearance="?attr/textAppearanceBody2"
             android:textColor="@android:color/black" />
-
 
         <TextView
             android:id="@+id/moviesToWatch"
@@ -99,7 +95,6 @@
             android:textAppearance="?attr/textAppearanceBody2"
             android:textColor="@android:color/black" />
 
-        <!-- İlerleme Çubuğu -->
         <ProgressBar
             android:id="@+id/progressBar"
             android:layout_width="match_parent"

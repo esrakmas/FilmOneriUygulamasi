@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.filmoneriuygulamasi.adapter.WatchLaterAdapter
 import com.example.filmoneriuygulamasi.adapter.WatchedAdapter
@@ -18,6 +19,8 @@ class WatchedFragment : Fragment() {
     private var _binding: FragmentWatchedBinding? = null
     private val binding get() = _binding!!
     private lateinit var adapter: WatchedAdapter
+    private lateinit var sharedViewModel: SharedViewModel  // ViewModel'i fragment'e bağladık
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,6 +33,12 @@ class WatchedFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+        // sharedViewModel'i başlatın
+        sharedViewModel = ViewModelProvider(requireActivity())[SharedViewModel::class.java]
+
+
+
         adapter = WatchedAdapter()
         binding.recyclerViewWatchedMovies.layoutManager = LinearLayoutManager(context)
         binding.recyclerViewWatchedMovies.adapter = adapter
@@ -39,6 +48,9 @@ class WatchedFragment : Fragment() {
             Log.d("WatchedFragment", "Movies fetched: $movies")
             // Verileri adapter'a iletin
             adapter.submitList(movies)
+
+            //film sayısını alamak
+            sharedViewModel.setWatchedMoviesCount(movies.size)
         }
     }
 

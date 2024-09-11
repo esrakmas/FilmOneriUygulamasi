@@ -5,7 +5,6 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Film Özet Başlığı -->
     <TextView
         android:id="@+id/textViewSummaryTitle"
         android:layout_width="wrap_content"
@@ -15,7 +14,6 @@
         android:textStyle="bold"
         android:layout_marginBottom="8dp"/>
 
-    <!-- Film Özeti İçeriği -->
     <TextView
         android:id="@+id/textViewSummaryContent"
         android:layout_width="wrap_content"
@@ -23,7 +21,6 @@
         android:text="Film özeti eklenmedi."
         android:textSize="16sp" />
 
-    <!-- Yorumlar Başlığı -->
     <TextView
         android:id="@+id/textViewCommentsTitle"
         android:layout_width="wrap_content"
@@ -34,7 +31,6 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"/>
 
-    <!-- Yorumlar İçeriği -->
     <TextView
         android:id="@+id/textViewCommentsContent"
         android:layout_width="wrap_content"

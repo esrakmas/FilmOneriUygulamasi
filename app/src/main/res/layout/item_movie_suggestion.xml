@@ -6,7 +6,6 @@
     android:layout_height="wrap_content"
     android:padding="8dp">
 
-
     <ImageView
         android:id="@+id/imageViewPosterSuggestion"
         android:layout_width="0dp"

@@ -13,43 +13,43 @@
             android:id="@+id/imageViewAddReviewDialog"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
-            android:src="@drawable/baseline_close_24"
+            android:layout_alignParentEnd="true"
             android:layout_marginTop="8dp"
-            android:padding="4dp" />
+            android:padding="4dp"
+            android:src="@drawable/baseline_close_24" />
     </RelativeLayout>
 
     <EditText
         android:id="@+id/editTextSummary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@android:drawable/edit_text"
+        android:gravity="top"
         android:hint="Özet ekleyin"
         android:inputType="textMultiLine"
-        android:minLines="3"
         android:maxLines="5"
-        android:gravity="top"
-        android:padding="10dp"
-        android:background="@android:drawable/edit_text" />
+        android:minLines="3"
+        android:padding="10dp" />
 
     <EditText
         android:id="@+id/editTextComment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@android:drawable/edit_text"
+        android:gravity="top"
         android:hint="Yorum ekleyin"
         android:inputType="textMultiLine"
-        android:minLines="3"
         android:maxLines="5"
-        android:gravity="top"
-        android:padding="10dp"
-        android:background="@android:drawable/edit_text"
-        android:layout_marginTop="16dp" />
+        android:minLines="3"
+        android:padding="10dp" />
 
     <Button
         android:id="@+id/buttonSubmitReview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Kaydet"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="16dp"
+        android:text="Kaydet" />
 
 </LinearLayout>

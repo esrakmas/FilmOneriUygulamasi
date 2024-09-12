@@ -9,19 +9,16 @@ import com.example.filmoneriuygulamasi.R
 import com.example.filmoneriuygulamasi.databinding.ItemMovieSuggestionBinding
 import com.example.filmoneriuygulamasi.network.MovieSuggestion
 
-/*
-
-Film önerilerini göster üstüne tıklanırsa MovieDetailsDialogAdapter çağır
-*/
-
 class MovieSuggestionsAdapter(
     private val movieSuggestions: List<MovieSuggestion>
 ) : RecyclerView.Adapter<MovieSuggestionsAdapter.MovieSuggestionViewHolder>() {
 
-    class MovieSuggestionViewHolder(val binding: ItemMovieSuggestionBinding) : RecyclerView.ViewHolder(binding.root)
+    class MovieSuggestionViewHolder(val binding: ItemMovieSuggestionBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieSuggestionViewHolder {
-        val binding = ItemMovieSuggestionBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ItemMovieSuggestionBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MovieSuggestionViewHolder(binding)
     }
 
@@ -39,9 +36,10 @@ class MovieSuggestionsAdapter(
         // Poster görselini Glide ile yükle
         Glide.with(holder.binding.imageViewPosterSuggestion.context)
             .load(secureUrl)
-            .apply(RequestOptions()
-                .placeholder(R.drawable.ic_launcher_background) // Placeholder resmi
-                .error(R.drawable.baseline_no) // Hata resmi
+            .apply(
+                RequestOptions()
+                    .placeholder(R.drawable.ic_launcher_background) // Placeholder resmi
+                    .error(R.drawable.baseline_no) // Hata resmi
             )
             .into(holder.binding.imageViewPosterSuggestion)
 
@@ -50,11 +48,11 @@ class MovieSuggestionsAdapter(
         holder.itemView.setOnClickListener {
             MovieDetailsDialogAdapter.showMovieDetailsDialog(
                 holder.itemView.context,
-                movieLine)
+                movieLine
+            )
         }
 
     }
-
 
     override fun getItemCount(): Int = movieSuggestions.size
 }

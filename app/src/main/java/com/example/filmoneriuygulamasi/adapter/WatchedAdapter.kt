@@ -18,8 +18,8 @@ class WatchedAdapter(
     private var movieList: List<MovieLine> = listOf()
 ) : RecyclerView.Adapter<WatchedAdapter.WatchedViewHolder>() {
 
-    inner class WatchedViewHolder(val binding: ItemWatchedBinding) : RecyclerView.ViewHolder(binding.root)
-    {
+    inner class WatchedViewHolder(val binding: ItemWatchedBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         init {
             binding.buttonUpdate.setOnClickListener {
                 val movieLine = movieList[adapterPosition]
@@ -51,9 +51,6 @@ class WatchedAdapter(
                 val movieLine = movieList[adapterPosition]
                 showSummaryAndCommentsDialog(binding.root.context, movieLine)
             }
-
-
-
         }
     }
 
@@ -64,8 +61,10 @@ class WatchedAdapter(
 
         // Firestore'dan veri al
         FirebaseRepository().fetchMovieSummaryAndComments(movieLine.name) { summary, comments ->
-            binding.textViewSummaryContent.text = if (summary.isNullOrBlank()) "Özet bulunamadı" else summary
-            binding.textViewCommentsContent.text = if (comments.isNullOrBlank()) "Yorum bulunamadı" else comments
+            binding.textViewSummaryContent.text =
+                if (summary.isNullOrBlank()) "Özet bulunamadı" else summary
+            binding.textViewCommentsContent.text =
+                if (comments.isNullOrBlank()) "Yorum bulunamadı" else comments
 
             // Diğer diyalog özelliklerini ayarla
             AlertDialog.Builder(context)
@@ -86,7 +85,6 @@ class WatchedAdapter(
         holder.binding.textViewTitle.text = movieLine.name
         holder.binding.textViewYear.text = movieLine.year
 
-
         val secureUrl = movieLine.img.replace("http://", "https://")
         Log.d("WatchedAdapter", "Loading image from URL: $secureUrl")
 
@@ -94,13 +92,13 @@ class WatchedAdapter(
             .load(secureUrl)
             .apply(
                 RequestOptions()
-                .placeholder(R.drawable.ic_launcher_background)
-                .error(R.drawable.baseline_no))
+                    .placeholder(R.drawable.ic_launcher_background)
+                    .error(R.drawable.baseline_no)
+            )
             .into(holder.binding.imageViewPoster)
     }
 
     override fun getItemCount(): Int = movieList.size
-
 
     fun submitList(movies: List<MovieLine>) {
         movieList = movies

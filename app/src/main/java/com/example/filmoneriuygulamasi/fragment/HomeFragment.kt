@@ -38,12 +38,14 @@ class HomeFragment : Fragment() {
 
         //  GridLayoutManager 3lu sutun olsun
         binding.recyclerViewMovieSuggestions.layoutManager = GridLayoutManager(context, 3)
-        binding.recyclerViewMovieSearch.layoutManager = GridLayoutManager(context, 3) // ya da LinearLayoutManager
+        binding.recyclerViewMovieSearch.layoutManager =
+            GridLayoutManager(context, 3) // ya da LinearLayoutManager
 
-
-        binding.searchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
+        binding.searchView.setOnQueryTextListener(object :
+            androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 if (query.isNullOrEmpty()) {
+
                     // Arama metni temizlendiğinde veya boş olduğunda öneri listesini göster
                     binding.recyclerViewMovieSearch.visibility = View.GONE
                     binding.recyclerViewMovieSuggestions.visibility = View.VISIBLE
@@ -68,15 +70,11 @@ class HomeFragment : Fragment() {
                 return false
             }
         })
-
-
         // Film önerilerini API'den yükleme fonksiyonu çağrılır
         loadMovieSuggestions()
 
         return view
     }
-
-
 
     private fun refreshPage() {
         // Öneri listesini tekrar yükle
@@ -85,7 +83,8 @@ class HomeFragment : Fragment() {
 
     // Klavyeyi kapatma fonksiyonu
     private fun hideKeyboard() {
-        val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        val imm =
+            requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(requireView().windowToken, 0)
         binding.searchView.clearFocus() // SearchView'in odaktan çıkmasını sağlar
     }
@@ -93,18 +92,24 @@ class HomeFragment : Fragment() {
     private fun loadMovieSuggestions() {
         val call = ApiClient.movieApiService.movieSuggest(
             contentType = "application/json",
-            authorization = "apikey 0zXunVCs4qN1zD5YpNZ88V:7kztaQJhg1xKov9tvLjaGZ"
+            authorization = "apikey 0a6w7cPEYljiAxvpU9vOTp:5VXrydZS4PYA6y5hvRruwI"
         )
         //yanıt
         call.enqueue(object : Callback<MovieSuggestResponse> {
-            override fun onResponse(call: Call<MovieSuggestResponse>, response: Response<MovieSuggestResponse>) {
+            override fun onResponse(
+                call: Call<MovieSuggestResponse>,
+                response: Response<MovieSuggestResponse>
+            ) {
                 if (response.isSuccessful) {
                     val movieSuggestions = response.body()?.result ?: emptyList()
                     Log.d("HomeFragment", "Movie Suggestions: $movieSuggestions")
                     movieSuggestionsAdapter = MovieSuggestionsAdapter(movieSuggestions)
                     binding.recyclerViewMovieSuggestions.adapter = movieSuggestionsAdapter
                 } else {
-                    Log.e("HomeFragment", "Movie Suggestions Error: ${response.code()} - ${response.message()}")
+                    Log.e(
+                        "HomeFragment",
+                        "Movie Suggestions Error: ${response.code()} - ${response.message()}"
+                    )
                 }
             }
 
@@ -125,7 +130,7 @@ class HomeFragment : Fragment() {
         val apiService = ApiClient.movieApiService
         val call = apiService.imdbSearchByName(
             contentType = "application/json",
-            authorization = "apikey 0zXunVCs4qN1zD5YpNZ88V:7kztaQJhg1xKov9tvLjaGZ",  // Buraya kendi API anahtarınızı ekleyin
+            authorization = "apikey 0a6w7cPEYljiAxvpU9vOTp:5VXrydZS4PYA6y5hvRruwI",  // Buraya kendi API anahtarınızı ekleyin
             query = query
         )
 
@@ -137,17 +142,21 @@ class HomeFragment : Fragment() {
 
                     try {
                         // JSON string'i MovieSearchResponse nesnesine dönüştür
-                        val movieSearchResponse = gson.fromJson(responseBody, MovieSearchResponse::class.java)
+                        val movieSearchResponse =
+                            gson.fromJson(responseBody, MovieSearchResponse::class.java)
                         val movieSearch = movieSearchResponse.result ?: emptyList()
                         Log.d("HomeFragment", "Movie Search: $movieSearch")
 
                         if (movieSearch.isNotEmpty()) {
-                            binding.recyclerViewMovieSearch.visibility = View.VISIBLE  // Sonuçlar varsa RecyclerView görünür
-                            binding.recyclerViewMovieSearch.adapter = MovieSearchAdapter(movieSearch)
+                            binding.recyclerViewMovieSearch.visibility =
+                                View.VISIBLE  // Sonuçlar varsa RecyclerView görünür
+                            binding.recyclerViewMovieSearch.adapter =
+                                MovieSearchAdapter(movieSearch)
 
                             Log.d("HomeFragment", "Sonuç bulundu")
                         } else {
-                            binding.recyclerViewMovieSearch.visibility = View.GONE  // Sonuç yoksa RecyclerView gizlenir
+                            binding.recyclerViewMovieSearch.visibility =
+                                View.GONE  // Sonuç yoksa RecyclerView gizlenir
                             Log.d(" ", "Sonuç bulunamadı")
                         }
                     } catch (e: JsonSyntaxException) {
@@ -169,8 +178,6 @@ class HomeFragment : Fragment() {
             }
         })
     }
-
-
 
     override fun onDestroyView() {
         super.onDestroyView()

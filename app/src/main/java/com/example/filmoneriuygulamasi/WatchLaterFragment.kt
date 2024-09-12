@@ -34,8 +34,7 @@ class WatchLaterFragment : Fragment() {
 
         val firebaseRepository = FirebaseRepository()
         firebaseRepository.fetchWatchLaterMovies { movies ->
-            Log.d("WatchLaterFragment", "Movies fetched: $movies")
-            // Verileri adapter'a iletin
+            // Verileri adapter a git
             adapter.submitList(movies)
         }
     }

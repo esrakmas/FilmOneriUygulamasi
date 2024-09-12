@@ -21,7 +21,6 @@ class WatchedFragment : Fragment() {
     private lateinit var adapter: WatchedAdapter
     private lateinit var sharedViewModel: SharedViewModel  // ViewModel'i fragment'e bağladık
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,22 +32,14 @@ class WatchedFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-        // sharedViewModel'i başlatın
         sharedViewModel = ViewModelProvider(requireActivity())[SharedViewModel::class.java]
-
-
-
         adapter = WatchedAdapter()
         binding.recyclerViewWatchedMovies.layoutManager = LinearLayoutManager(context)
         binding.recyclerViewWatchedMovies.adapter = adapter
 
         val firebaseRepository = FirebaseRepository()
         firebaseRepository.fetchWatchedMovies { movies ->
-            Log.d("WatchedFragment", "Movies fetched: $movies")
-            // Verileri adapter'a iletin
             adapter.submitList(movies)
-
             //film sayısını alamak
             sharedViewModel.setWatchedMoviesCount(movies.size)
         }

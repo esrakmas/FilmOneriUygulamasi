@@ -27,10 +27,8 @@ class LibraryFragment : Fragment() {
         tabLayout = view.findViewById(R.id.tabLayout)
         viewPager = view.findViewById(R.id.viewPager)
 
-        // Adapter set up
         viewPager.adapter = LibraryAdapter(this)
 
-        // Attach TabLayout with ViewPager2
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = when (position) {
                 0 -> "İzlediklerim"
@@ -45,14 +43,14 @@ class LibraryFragment : Fragment() {
     private inner class LibraryAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
 
         override fun getItemCount(): Int {
-            return 2 // Two tabs: Watched, Watch Later
+            return 2 //2 tab olsun
         }
 
         override fun createFragment(position: Int): Fragment {
             return when (position) {
                 0 -> WatchedFragment() // Tab 1: İzlediklerim
                 1 -> WatchLaterFragment() // Tab 2: Daha Sonra İzle
-                else -> Fragment() // Default case
+                else -> Fragment()
             }
         }
     }

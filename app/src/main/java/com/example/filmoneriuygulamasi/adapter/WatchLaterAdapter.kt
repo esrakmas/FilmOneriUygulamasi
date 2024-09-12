@@ -16,15 +16,15 @@ class WatchLaterAdapter(
     private var movieList: List<MovieLine> = listOf()
 ) : RecyclerView.Adapter<WatchLaterAdapter.WatchLaterAdapterViewHolder>() {
 
-    inner class WatchLaterAdapterViewHolder(val binding: ItemWatchLaterBinding) : RecyclerView.ViewHolder(binding.root)
-    {
+    inner class WatchLaterAdapterViewHolder(val binding: ItemWatchLaterBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         init {
             binding.buttonWatched.setOnClickListener {
                 val movieLine = movieList[adapterPosition]
                 // itemView.context ile context'i alıyoruz
                 AddReviewDialogAdapter.showReviewDialog(itemView.context, movieLine)
 
-                //önde kaydet sonra sil
+                //önce kaydet sonra sil
                 val firebaseRepository = FirebaseRepository()
                 firebaseRepository.saveMovieToWatched(itemView.context, movieLine)
                 firebaseRepository.deleteMovieFromWatchLater(itemView.context, movieLine.name)
@@ -45,7 +45,10 @@ class WatchLaterAdapter(
                     .setPositiveButton("Evet") { _, _ ->
 
                         val firebaseRepository = FirebaseRepository()
-                        firebaseRepository.deleteMovieFromWatchLater(itemView.context, movieLine.name)
+                        firebaseRepository.deleteMovieFromWatchLater(
+                            itemView.context,
+                            movieLine.name
+                        )
 
                         val updatedList = movieList.toMutableList()
                         updatedList.removeAt(adapterPosition)
@@ -54,14 +57,12 @@ class WatchLaterAdapter(
                     .setNegativeButton("Hayır", null) // Hayır'a tıklandığında hiçbir şey yapma
                     .show()
             }
-
-
-
-
         }
     }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WatchLaterAdapterViewHolder {
-        val binding =ItemWatchLaterBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ItemWatchLaterBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return WatchLaterAdapterViewHolder(binding)
     }
 
@@ -76,12 +77,12 @@ class WatchLaterAdapter(
 
         Glide.with(holder.binding.imageViewPoster.context)
             .load(secureUrl)
-            .apply(RequestOptions()
-                .placeholder(R.drawable.ic_launcher_background)
-                .error(R.drawable.baseline_no))
+            .apply(
+                RequestOptions()
+                    .placeholder(R.drawable.ic_launcher_background)
+                    .error(R.drawable.baseline_no)
+            )
             .into(holder.binding.imageViewPoster)
-
-
     }
 
     override fun getItemCount(): Int = movieList.size

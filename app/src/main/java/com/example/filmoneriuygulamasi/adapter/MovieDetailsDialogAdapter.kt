@@ -13,14 +13,6 @@ import com.example.filmoneriuygulamasi.repository.FirebaseRepository
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
-/*
-*
-* film detaylarını gösterr
-* izledime basarsa : AddReviewDialogAdapter çağır
-* Daha sonra izleye basarsa : ??? şuanlık boş
-* */
-
-
 class MovieDetailsDialogAdapter
    {
 
@@ -30,7 +22,7 @@ class MovieDetailsDialogAdapter
         {
             val dialogBinding = DialogMovieDetailsBinding.inflate(LayoutInflater.from(context))
 
-            // Dialog alanlarını doldurma
+            // Dialog alanlarını api ile doldurma
             dialogBinding.textViewNameDetailsDialog.text = movieLine.name
             dialogBinding.textViewYearDetailsDialog.text =  "${movieLine.year}"
             dialogBinding.textViewGenreDetailsDialog.text = " ${movieLine.sty}"
@@ -46,7 +38,6 @@ class MovieDetailsDialogAdapter
                 .load(secureUrl)
                 .into(dialogBinding.imageViewPosterDetailsDialog)
 
-            //dialog oluştur
             val dialog = AlertDialog.Builder(context)
                 .setView(dialogBinding.root)
                 .setCancelable(true)
@@ -55,7 +46,6 @@ class MovieDetailsDialogAdapter
             dialog.show()
 
             val firebaseRepository = FirebaseRepository()
-
 
             dialogBinding.buttonWatchedDetailsDialog.setOnClickListener {
                 dialog.dismiss()
@@ -72,11 +62,5 @@ class MovieDetailsDialogAdapter
             }
 
         }
-
-
-
-
-
     }
-
 }

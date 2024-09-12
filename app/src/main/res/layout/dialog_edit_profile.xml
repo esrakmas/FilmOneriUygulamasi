@@ -9,18 +9,18 @@
         android:id="@+id/imageViewCloseEditProfileDialog"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
         android:layout_gravity="end"
-        android:src="@drawable/baseline_close_24"
         android:layout_marginTop="8dp"
-        android:padding="4dp" />
+        android:padding="4dp"
+        android:src="@drawable/baseline_close_24" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="16dp">
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/imageMale"

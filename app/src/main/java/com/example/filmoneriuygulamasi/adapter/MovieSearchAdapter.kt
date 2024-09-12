@@ -9,15 +9,17 @@ import com.example.filmoneriuygulamasi.databinding.ItemMovieSearchBinding
 import com.example.filmoneriuygulamasi.network.MovieLine
 import com.example.filmoneriuygulamasi.network.MovieSearchResult
 
-class MovieSearchAdapter(private val movieList: List<MovieSearchResult>) : RecyclerView.Adapter<MovieSearchAdapter.MovieViewHolder>() {
+class MovieSearchAdapter(private val movieList: List<MovieSearchResult>) :
+    RecyclerView.Adapter<MovieSearchAdapter.MovieViewHolder>() {
 
-    class MovieViewHolder(private val binding: ItemMovieSearchBinding) : RecyclerView.ViewHolder(binding.root) {
+    class MovieViewHolder(private val binding: ItemMovieSearchBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(movie: MovieSearchResult) {
             binding.textViewTitleSearch.text = movie.Title
             binding.textViewYearSearch.text = movie.Year
             Glide.with(binding.root.context)
                 .load(movie.Poster)
-                .placeholder(R.drawable.ic_launcher_background) // Yer tutucu resim
+                .placeholder(R.drawable.ic_launcher_background)
                 .into(binding.imageViewPosterSearch)
             binding.root.setOnClickListener {
                 val movieLine = convertToMovieLine(movie)
@@ -44,7 +46,8 @@ class MovieSearchAdapter(private val movieList: List<MovieSearchResult>) : Recyc
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
-        val binding = ItemMovieSearchBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ItemMovieSearchBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MovieViewHolder(binding)
     }
 

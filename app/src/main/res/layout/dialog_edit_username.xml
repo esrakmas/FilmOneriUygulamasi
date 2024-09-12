@@ -8,11 +8,11 @@
         android:id="@+id/imageViewCloseUserNameDialog"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:src="@drawable/baseline_close_24"
+        android:layout_alignParentEnd="true"
         android:layout_marginTop="8dp"
-        android:padding="4dp" />
+        android:padding="4dp"
+        android:src="@drawable/baseline_close_24" />
 
     <EditText
         android:id="@+id/userNameEditText"
@@ -20,8 +20,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
         android:layout_marginTop="15dp"
+        android:layout_marginEnd="16dp"
         android:hint="Yeni Kullanıcı Adı" />
 
 </RelativeLayout>

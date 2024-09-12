@@ -2,17 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
     android:background="@color/black"
-  >
+    android:orientation="vertical"
+    android:padding="16dp">
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:queryHint="Film Ara"
-        android:background="@drawable/searchview_bg">
+        android:background="@drawable/searchview_bg"
+        android:queryHint="Film Ara">
 
     </androidx.appcompat.widget.SearchView>
 
@@ -28,11 +27,11 @@
         android:id="@+id/textViewMovieSuggestions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="Film Önerileri"
         android:textColor="@color/white"
         android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_marginTop="16dp" />
+        android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewMovieSuggestions"
@@ -42,4 +41,4 @@
         android:layout_weight="1"
         android:scrollbars="vertical" />
 
-  </LinearLayout>
+</LinearLayout>

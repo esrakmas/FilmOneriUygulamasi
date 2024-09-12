@@ -5,23 +5,21 @@
     android:layout_height="match_parent"
     android:background="@color/black"
     android:orientation="vertical"
-    android:padding="8dp"
-    >
+    android:padding="8dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:background="@drawable/background_profile_info"
         android:gravity="center_horizontal"
 
-        android:background="@drawable/background_profile_info">
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingStart="30dp"
-            >
+            android:paddingStart="30dp">
 
             <ImageView
                 android:id="@+id/profileImage"
@@ -46,21 +44,21 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_horizontal"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="8dp"
-            android:padding="10sp"
-            android:layout_marginStart="10dp">
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:padding="10sp">
 
             <TextView
                 android:id="@+id/userName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingEnd="5dp"
-                android:textSize="30sp"
                 android:text="Kullanıcı Adı"
                 android:textAppearance="?attr/textAppearanceHeadline6"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textSize="30sp" />
 
             <ImageView
                 android:id="@+id/editUserNameIcon"
@@ -77,23 +75,23 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
         android:orientation="vertical"
-        android:padding="10dp"
-        android:gravity="center_horizontal">
+        android:padding="10dp">
 
         <TextView
             android:id="@+id/userRank"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Kullanıcı Rütbesi"
-            android:gravity="center"
-            android:textSize="15sp"
-            android:padding="10dp"
             android:layout_marginBottom="10dp"
+            android:background="@drawable/circle_background"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Kullanıcı Rütbesi"
             android:textAppearance="?attr/textAppearanceBody2"
             android:textColor="@color/black"
-            android:background="@drawable/circle_background"/>
+            android:textSize="15sp" />
 
         <ImageView
 
@@ -101,33 +99,30 @@
             android:layout_width="147dp"
             android:layout_height="132dp"
 
-            app:srcCompat="@drawable/rank"
-            />
+            app:srcCompat="@drawable/rank" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="10dp"
         android:gravity="center_horizontal"
-        >
+        android:orientation="vertical"
+        android:padding="10dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:background="@drawable/circle_border"
             android:gravity="center_vertical"
-            android:padding="10dp"
-            android:background="@drawable/circle_border">
+            android:orientation="horizontal"
+            android:padding="10dp">
 
             <ImageView
                 android:id="@+id/iconMoviesWatched"
                 android:layout_width="38dp"
                 android:layout_height="38dp"
                 android:contentDescription="İzlenen Filmler"
-                android:src="@drawable/checked"
-               />
+                android:src="@drawable/checked" />
 
             <TextView
                 android:id="@+id/moviesWatched"
@@ -172,13 +167,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:background="@drawable/circle_border"
             android:indeterminate="false"
             android:max="100"
             android:padding="15dp"
-            android:progress="0"
-            android:background="@drawable/circle_border"
-           />
+            android:progress="0" />
     </LinearLayout>
-
 
 </LinearLayout>

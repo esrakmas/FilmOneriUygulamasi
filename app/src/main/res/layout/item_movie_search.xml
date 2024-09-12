@@ -10,40 +10,39 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
-        android:contentDescription="@string/movie_poster"
-        app:layout_constraintDimensionRatio="W, H"
-        app:layout_constraintWidth_default="wrap"
-        app:layout_constraintHeight_default="wrap"
-        app:layout_constraintWidth_min="100dp"
-        app:layout_constraintHeight_min="150dp"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/textViewTitleSearch"
+        app:layout_constraintDimensionRatio="W, H"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHeight_default="wrap"
+        app:layout_constraintHeight_min="150dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_default="wrap"
+        app:layout_constraintWidth_min="100dp" />
 
     <TextView
         android:id="@+id/textViewTitleSearch"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textSize="16sp"
-        android:textStyle="bold"
         android:text="Film Adı"
         android:textColor="@color/white"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewPosterSearch"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewPosterSearch" />
 
     <TextView
         android:id="@+id/textViewYearSearch"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textSize="14sp"
         android:text="Yıl: 2024"
-        android:textColor="@color/white"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTitleSearch"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitleSearch" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

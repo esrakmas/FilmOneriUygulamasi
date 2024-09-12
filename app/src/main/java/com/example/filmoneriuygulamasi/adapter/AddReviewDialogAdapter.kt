@@ -8,7 +8,6 @@ import com.example.filmoneriuygulamasi.databinding.DialogAddReviewBinding
 import com.example.filmoneriuygulamasi.network.MovieLine
 import com.example.filmoneriuygulamasi.repository.FirebaseRepository
 
-
 class AddReviewDialogAdapter {
     companion object {
         fun showReviewDialog(context: Context, movie: MovieLine) {

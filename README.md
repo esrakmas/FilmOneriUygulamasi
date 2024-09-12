@@ -17,7 +17,7 @@ Film Öneri Uygulaması, kullanıcılara film önerileri sunan ve film arama, de
   ![3](https://github.com/user-attachments/assets/43b7821f-06a4-4e0d-9e1a-743b5793db6f)
 
 - **Film Listeleri:** Kullanıcılar, izledikleri ve izlemek istedikleri filmleri listeleyebilirler.
-  ![5](https://github.com/user-attachments/assets/7a14506e-87ca-48d7-9484-cc2fdb2220cf)
+-   ![5](https://github.com/user-attachments/assets/7a14506e-87ca-48d7-9484-cc2fdb2220cf)
   ![6](https://github.com/user-attachments/assets/db4a27ba-17f5-435a-92ff-0ba64378cadc)
 
 - **Profil Yönetimi:** Kullanıcılar, profil fotoğraflarını ve kullanıcı adlarını değiştirebilirler.
